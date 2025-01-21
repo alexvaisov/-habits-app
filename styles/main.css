@@ -7,3 +7,80 @@ body {
     margin: 0;
     background-color: #F3F6FD;
 }
+
+.app {
+    display: flex;
+}
+
+.panel {
+    min-height: 100vh;
+
+    padding: 30px;
+
+    background-color: white;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 50px;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.menu-item {
+    width: 52px;
+    height: 52px;
+
+    text-align: center;
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 8px 14px rgba(10, 62, 59, 0.483);
+    border-radius: 14px;
+    border: none;
+
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.menu-item:hover {
+    background-color: #6a84fba1;
+}
+
+.menu-item:hover img{
+    filter: brightness(0) invert(1);
+}
+
+.menu-item img {
+    width: 30px;
+    height: 30px;
+}
+
+.menu-item-active {
+    background-color: #6a84fbdd;
+}
+
+.menu-item-active img {
+    filter: brightness(0) invert(1);
+}
+
+.menu-add {
+    width: 52px;
+    height: 52px;
+
+    background-color: #FFFFFF;
+    border: 1px solid #CAD5FF;
+    border-radius: 14px;
+    margin-top: 50px;
+
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.menu-add:hover {
+    background-color: #6afbab9f;
+}
