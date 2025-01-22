@@ -6,6 +6,7 @@ body {
     font-family: 'Comfortaa', cursive;
     margin: 0;
     background-color: #F3F6FD;
+    font-weight: 400;
 }
 
 .app {
@@ -49,6 +50,7 @@ body {
 
 .menu-item:hover {
     background-color: #6a84fba1;
+    box-shadow: 0px 8px 14px rgba(67, 40, 203, 0.613);
 }
 
 .menu-item:hover img{
@@ -81,6 +83,198 @@ body {
     transition: 0.5s;
 }
 
+.menu-add img {
+    width: 30px;
+    height: 30px;
+}
+
 .menu-add:hover {
     background-color: #6afbab9f;
+}
+
+.content {
+    padding: 50px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 900px;
+
+    gap: 50px;
+}
+
+.header-title {
+    font-size: 30px;
+    line-height: 33px;
+    color: #000000;
+}
+
+.header__progres {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 235px;
+
+    gap: 12px;
+}
+
+.progres-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progres-name {
+    font-size: 12px;
+    line-height: 13px;
+    color: #232360;
+}
+
+.progres-persent {
+    font-size: 12px;
+    line-height: 13px;
+    color: #768396;
+}
+
+.progres-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #3e68c944;
+    border-radius: 4px;
+    position: relative;
+    
+}
+
+.progres-bar-active {
+    position: absolute;
+    width: 80%;
+    height: 4px;
+
+    background-color: #5051f9;
+    border-radius: 4px;
+}
+
+.list-habbit {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.habbit-day {
+    min-width: 150px;
+
+    font-size: 14px;
+    line-height: 16px;
+
+    padding: 20px 40px;
+
+    background-color: #FBFAFF;
+    border-radius: 10px 0 0 10px;
+    border-right: 1px solid #e7ebfb;
+}
+
+.habbit-comment {
+    font-size: 16px;
+    line-height: 18px;
+
+    padding: 20px 25px;
+}
+
+.habbit-delete {
+    width: 40px;
+    height: 40px;
+
+    margin-left: auto;
+
+    background-color: #5050f900;
+    box-shadow: 0px 8px 10px rgba(14, 208, 198, 0.819);
+    border: none;
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.habbit-delete img {
+    width: 25px;
+    height: 25px;
+}
+
+.habbit-delete:hover {
+    background-color: rgba(180, 42, 7, 0.983);
+    box-shadow: 0px 8px 10px rgba(208, 40, 14, 0.736);
+}
+
+.habbit-delete:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.habbit-form {
+    display: flex;
+    position: relative;
+
+    width: 75%;
+
+    gap: 15px;
+
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.input-icon {
+    flex: 1;
+
+    background-color: #FFFFFF;
+    border: 1px solid #e7ebfb;
+    border-radius: 9px;
+
+    padding: 12px 20px 12px 40px;
+}
+
+input{
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    
+}
+input::placeholder {
+    color: #8899A8;
+}
+
+.input-item {
+    position: absolute;
+    top: 13px;
+    left: 20px;
+}
+
+.habbit-ok {
+    width: 40px;
+    height: 40px;
+
+    margin-left: auto;
+
+    background-color: #5050f900;
+    border: none;
+    border-radius: 50%;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.habbit-ok img {
+    width: 30px;
+    height: 30px;
+}
+
+.habbit-ok:hover {
+    background-color: rgba(7, 180, 96, 0.814);
+    box-shadow: 0px 8px 10px rgba(14, 208, 150, 0.736);
+}
+
+.habbit-ok:hover img {
+    filter: brightness(0) invert(1);
 }
