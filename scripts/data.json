@@ -17,5 +17,14 @@
         "days": [
             {"comment": "nice!"}
         ]
+    },
+    {
+        "id": 3,
+        "icon": "food",
+        "name": "nutrition",
+        "target": 10,
+        "days": [
+            {"comment": "nice!"}
+        ]
     }
 ]
