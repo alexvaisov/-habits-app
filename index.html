@@ -28,7 +28,7 @@
                     </button> -->
                 </div>
 
-                <button class="menu-add">
+                <button class="menu-add" onclick="togglePopup()">
                     <img src="images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.svg" alt="Add">
                 </button>
 
@@ -70,6 +70,36 @@
                     </form>
                 </div>
             </main>
+        </div>
+        <div class="cover cover-hidden" id="add-habbit-popup">
+            <div class="popup">
+                <h2 class="popup__title">New habit</h2>
+                <div class="icon-label">Icon</div>
+                <div class="icon-select">
+                    <button class="icon icon-active" onclick="setIcon(this, 'Coding')">
+                        <img src="images/coding.svg" alt="Coding">
+                    </button>
+                    <button class="icon" onclick="setIcon(this, 'Sport')">
+                        <img src="images/sport.svg" alt="Sport">
+                    </button>
+                    <button class="icon" onclick="setIcon(this,'Food')">
+                        <img src="images/food.svg" alt="Food">
+                    </button>
+                </div>
+
+                <form class="popup__form">
+                    <input type="text" class="input-icon" name="name" hidden value="coding">
+                    <input type="text" class="input-icon" name="icon" placeholder="Name">
+                    <input type="number" class="input-icon" name="target" placeholder="Goals">
+                    <button class="habbit-ok" type="submit">
+                        <img src="images/check--check-form-validation-checkmark-success-add-addition-tick.svg" alt="Ok">
+                    </button>
+                </form>
+                <button class="popup__close" onclick="togglePopup()">
+                    <img src="images/delete-1--remove-add-button-buttons-delete-cross-x-mathematics-multiply-math.svg" alt="Close">
+                </button>
+
+            </div>
         </div>
     </div>
 

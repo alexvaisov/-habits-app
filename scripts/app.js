@@ -1,6 +1,4 @@
 
-// let response = fetch('scripts/data.json');
-
 'use strict';
 
 let habbits = [];
@@ -19,7 +17,12 @@ const page = {
     content: {
         daysContainer: document.getElementById('main__list'),
         nextDay: document.querySelector('.habbit-day')
-    } 
+    },
+    popup: {
+        index: document.getElementById('add-habbit-popup'),
+        iconField: document.querySelector('.popup__form input[name="icon"]')
+    }
+
 };
 
 // utils
@@ -34,6 +37,14 @@ function loadData() {
 
 function saveData() {
     localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits));
+}
+
+function togglePopup() {
+    if (page.popup.index.classList.contains('cover-hidden')) {
+        page.popup.index.classList.remove('cover-hidden');
+    } else {
+        page.popup.index.classList.add('cover-hidden');
+    }
 }
 
 // render
@@ -139,6 +150,15 @@ function deleteDay(index) {
     });
     rerender(globalActiveHabbitId);
     saveData();
+}
+
+// working with habbits
+
+function setIcon(context, icon) {
+    page.popup.iconField.value = icon;
+    const activeIcon = document.querySelector('.icon.icon-active');
+    activeIcon.classList.remove('icon-active');
+    context.classList.add('icon-active');
 }
 
 // init
