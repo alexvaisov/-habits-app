@@ -87,7 +87,7 @@ function rerenderMenu(activeHabbit) {
             element.setAttribute('menu-habbit-id', habbit.id);
             element.classList.add('menu-item');
             element.addEventListener('click', () => rerender(habbit.id));
-            element.innerHTML = `<img src="images/${habbit.icon}.svg" alt="${habbit.name}">`
+            element.innerHTML = `<img src="images/${habbit.icon.toLowerCase()}.svg" alt="${habbit.name}">`
             page.menu.appendChild(element);
             existed = element;
         }
