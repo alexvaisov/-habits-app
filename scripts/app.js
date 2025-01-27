@@ -220,7 +220,7 @@ function showMenu() {
             const menu = document.querySelector('.panel__menu');
             const menuPosition = document.querySelector('.panel');
             const buttonSlider = document.querySelector('.slider');
-            if (menu.classList.contains('hide')) {
+            if (menu.classList.contains('hide') && buttonSlider.classList.contains('position') && menuPosition.classList.contains('panel-off')) {
                 menu.classList.remove('hide');
                 buttonSlider.classList.remove('position');
                 menuPosition.classList.remove('panel-off');
