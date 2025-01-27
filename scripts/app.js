@@ -118,10 +118,12 @@ function rerenderContent(activeHabbit) {
         element.classList.add('habbit');
         element.innerHTML = `<div class="list-habbit">
                         <div class="habbit-day">Day ${Number(index) + 1}</div>
-                        <div class="habbit-comment">${activeHabbit.days[index].comment}</div>
-                        <button class="habbit-delete" onclick="deleteDay(${index})">
-                            <img src="images/file-delete-alternate--file-common-delete-cross.svg" alt="delete day ${index + 1}">
-                        </button>
+                            <div class="habbit-content">
+                                <div class="habbit-comment">${activeHabbit.days[index].comment}</div>
+                                <button class="habbit-delete" onclick="deleteDay(${index})">
+                                    <img src="images/file-delete-alternate--file-common-delete-cross.svg" alt="delete day ${index + 1}">
+                                </button>
+                            </div>
                     </div>`
         page.content.daysContainer.appendChild(element);
     }
@@ -208,6 +210,21 @@ function addHabbit(event) {
     togglePopup();
     saveData();
     rerender(maxId + 1);
+}
+const buttonShowMenu = document.querySelector('.slider');
+
+function showMenu() {
+
+    if (buttonShowMenu) {
+        buttonShowMenu.addEventListener('click', function() {
+            const menu = document.querySelector('.panel');
+            if (menu.classList.contains('hide')) {
+                menu.classList.remove('hide');
+            } else {
+                menu.classList.add('hide');
+            }
+        })
+    }
 }
 
 // init
