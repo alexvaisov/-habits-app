@@ -96,11 +96,6 @@ body {
     padding: 50px;
 }
 
-.slider {
-    display: none;
-}
-
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -444,6 +439,8 @@ input.error {
         grid-template-rows: 1fr 1fr;
         margin: 0 auto;
         max-width: 370px;
+
+        position: relative;
         
     }
     
@@ -465,6 +462,11 @@ input.error {
         background-color: white;
     }
 
+    .panel-off {
+        position: fixed;
+        bottom: 0;
+    }
+
     .panel__menu {
         height: auto;
 
@@ -472,8 +474,6 @@ input.error {
     }
     
     .logo {
-        grid-row-start: 1;
-
         width: 60px;
         height: 60px;
         margin-bottom: 0;
@@ -569,6 +569,15 @@ input.error {
     }
     
     .slider {
+        grid-row-start: 1;
+    }
+
+    .position {
+        align-items: end;
+        grid-row-start: 3;
+    }
+
+    .hide {
         display: none;
     }
     

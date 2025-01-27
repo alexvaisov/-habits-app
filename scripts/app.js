@@ -217,11 +217,18 @@ function showMenu() {
 
     if (buttonShowMenu) {
         buttonShowMenu.addEventListener('click', function() {
-            const menu = document.querySelector('.panel');
+            const menu = document.querySelector('.panel__menu');
+            const menuPosition = document.querySelector('.panel');
+            const buttonSlider = document.querySelector('.slider');
             if (menu.classList.contains('hide')) {
                 menu.classList.remove('hide');
+                buttonSlider.classList.remove('position');
+                menuPosition.classList.remove('panel-off');
             } else {
                 menu.classList.add('hide');
+                buttonSlider.classList.add('position');
+                menuPosition.classList.add('panel-off');
+
             }
         })
     }
