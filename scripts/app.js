@@ -101,8 +101,10 @@ function rerenderHead(activeHabbit) {
     page.header.progressBarActive.setAttribute('style', `width: ${progress}%`);
 }
 
+
 function rerenderContent(activeHabbit) {
     page.content.daysContainer.innerHTML = '';
+    
     for (const index in activeHabbit.days) {
         const element = document.createElement('div');
         element.classList.add('habbit');
@@ -114,11 +116,28 @@ function rerenderContent(activeHabbit) {
                                     <img src="images/file-delete-alternate--file-common-delete-cross.svg" alt="delete day ${index + 1}">
                                 </button>
                             </div>
-                    </div>`
+                    </div>`;
         page.content.daysContainer.appendChild(element);
     }
-    page.content.nextDay.innerHTML = `Day ${activeHabbit.days.length + 1}`;
+
+    const commentForm = document.querySelector('.habbit-form');
+
+    if (activeHabbit.days.length >= activeHabbit.target) {
+        if (commentForm) commentForm.style.display = 'none';
+        page.content.nextDay.style.display = 'none';
+
+        const message = document.createElement('div');
+        message.classList.add('goal-reached-message');
+        message.textContent = '🎉 Goal achieved! Well done!';
+        page.content.daysContainer.appendChild(message);
+    } else {
+        if (commentForm) commentForm.style.display = 'flex';
+        page.content.nextDay.style.display = 'flex';
+        page.content.nextDay.innerHTML = `Day ${activeHabbit.days.length + 1}`;
+    }
 }
+
+
 
 function rerender(activeHabbitId) {
     globalActiveHabbitId = activeHabbitId;
