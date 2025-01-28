@@ -237,15 +237,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // init
-
 (() => {
     loadData();
+
     const hashId = Number(document.location.hash.replace('#', ''));
-    const urlHabbit = habbits.find(habbit => habbit.id == hashId);
+    if (isNaN(hashId)) {
+        console.warn('Некорректный hashId:', hashId);
+    }
+
+    const urlHabbit = habbits.find(habbit => habbit.id === hashId);
+
     if (urlHabbit) {
         rerender(urlHabbit.id);
     } else if (habbits.length > 0) {
         rerender(habbits[0].id);
+    } else {
+        console.warn('Нет доступных привычек для отображения.');
     }
 })();
-
