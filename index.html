@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <title>Habbits App</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +92,7 @@
                 </div>
 
                 <form class="popup__form" onsubmit="addHabbit(event)">
-                    <input type="text" class="input-icon" name="name" hidden value="coding">
+                    <input type="text" class="input-icon" name="name" hidden value=" " id="input-name">
                     <input type="text" class="input-icon" name="icon" placeholder="Name">
                     <input type="number" class="input-icon" name="target" placeholder="Goals">
                     <button class="habbit-ok" type="submit">

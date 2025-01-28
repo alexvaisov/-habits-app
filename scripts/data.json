@@ -1,30 +1,13 @@
 [
     {
-        "id": 1,
-        "icon": "coding",
-        "name": "education",
+        "id": [null],
+        "icon": ["coding", "sport", "food"],
+        "name": ["education", "trening", "nutrition"],
         "target": 10,
         "days": [
             {"comment": "one comment"},
             {"comment": "two comment"}
         ]
-    },
-    {
-        "id": 2,
-        "icon": "sport",
-        "name": "trening",
-        "target": 10,
-        "days": [
-            {"comment": "nice!"}
-        ]
-    },
-    {
-        "id": 3,
-        "icon": "food",
-        "name": "nutrition",
-        "target": 10,
-        "days": [
-            {"comment": "nice!"}
-        ]
     }
+
 ]
