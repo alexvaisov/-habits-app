@@ -871,7 +871,10 @@ input.error {
     
     .icon-select {
         display: flex;
-        gap: 25px;
+        width: 256px;
+        height: 55px;
+        overflow-y: scroll;
+        gap: 50px;
     
         margin-bottom: 20px;
     }
@@ -892,8 +895,8 @@ input.error {
     }
     
     .icon img {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
     
     .icon:hover {

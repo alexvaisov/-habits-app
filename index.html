@@ -41,7 +41,7 @@
 
         <div class="content">
             <header class="header">
-                <h1 class="header-title">Add your first habit</h1>
+                <h1 class="header-title" id="input-name">Add your first habit</h1>
                 <div class="header__progres">
                     <div class="progres-text">
                         <div class="progres-name">Progress</div>
@@ -89,12 +89,39 @@
                     <button class="icon" onclick="setIcon(this,'Food')">
                         <img src="images/food.svg" alt="Food">
                     </button>
+
+                    <button class="icon" onclick="setIcon(this, 'Book')">
+                        <img src="images/book.svg" alt="Book">
+                    </button>
+                    <button class="icon" onclick="setIcon(this, 'Design')">
+                        <img src="images/design.svg" alt="Design">
+                    </button>
+                    <button class="icon" onclick="setIcon(this,'Film')">
+                        <img src="images/film.svg" alt="Film">
+                    </button>
+
+                    <button class="icon" onclick="setIcon(this, 'Gaming')">
+                        <img src="images/gaming.svg" alt="Gaming">
+                    </button>
+                    <button class="icon" onclick="setIcon(this, 'Learning')">
+                        <img src="images/learning.svg" alt="Learning">
+                    </button>
+                    <button class="icon" onclick="setIcon(this,'Paint')">
+                        <img src="images/paint.svg" alt="Paint">
+                    </button>
+
+                    <button class="icon" onclick="setIcon(this, 'Sleep')">
+                        <img src="images/sleep.svg" alt="Sleep">
+                    </button>
+                    <button class="icon" onclick="setIcon(this,'Smoking')">
+                        <img src="images/smoking.svg" alt="Smoking">
+                    </button>
                 </div>
 
                 <form class="popup__form" onsubmit="addHabbit(event)">
-                    <input type="text" class="input-icon" name="name" hidden value=" " id="input-name">
-                    <input type="text" class="input-icon" name="icon" placeholder="Name">
-                    <input type="number" class="input-icon" name="target" placeholder="Goals">
+                    <input type="text" class="input-icon" name="name" placeholder="Habit name">
+                    <input type="text" class="input-icon" name="icon" hidden>
+                    <input type="number" class="input-icon" name="target" placeholder="Goals (day)" min="1" max="365">
                     <button class="habbit-ok" type="submit">
                         <img src="images/check--check-form-validation-checkmark-success-add-addition-tick.svg" alt="Ok">
                     </button>

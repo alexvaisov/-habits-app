@@ -211,28 +211,52 @@ function setIcon(context, icon) {
     context.classList.add('icon-active');
 }
 
+function selectHabbit(habbitId) {
+    console.log('выбрана привычка с ID', habbitId);
+
+    const habbit = habbits.find(h => h.id === habbitId);
+    if (!habbit) {
+        console.log('привычка не найдена');
+        return;
+    }
+
+    const header = document.querySelector('.header-title');
+    if (!header) {
+        console.log('Ошибка: элемент .header-title не найден!');
+        return;
+    }
+
+    document.querySelector('.header-title').textContent = habbit.name;
+
+    console.log('Обновляем заголовок на:', habbit.name);
+    header.textContent = habbit.name;
+}
+
 function addHabbit(event) {
     event.preventDefault();
     const data = validateAndGetFormData(event.target, ['name', 'icon', 'target']);
-    if (!data) {
-        return;
-    }
-    const inputElement = document.getElementById('input-name');
-    inputElement.value = data.name.icon;
-    const maxId = habbits.reduce((acc, habbit) => acc > habbit.id ? acc : habbit.id, 0)
-    habbits.push({
+    if (!data) return;
+
+    const storedHabbits = JSON.parse(localStorage.getItem(HABBIT_KEY)) || [];
+    
+    const maxId = storedHabbits.reduce((acc, habbit) => Math.max(acc, habbit.id), 0);
+
+    const newHabbit = {
         id: maxId + 1,
         name: data.name,
-        target: data.target,
+        target: Number(data.target),
         icon: data.icon,
         days: []
-    });
-    console.log(data.target);
+    };
+
+    habbits.push(newHabbit);
+    saveData();
+
     resetForm(event.target, ['name', 'icon', 'target']);
     togglePopup();
-    saveData();
-    rerender(maxId + 1);
+    rerender(newHabbit.id);
 }
+
 
 
 function showMenu() {
