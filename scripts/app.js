@@ -113,7 +113,7 @@ function rerenderContent(activeHabbit) {
                             <div class="habbit-content">
                                 <div class="habbit-comment">${activeHabbit.days[index].comment}</div>
                                 <button class="habbit-delete" onclick="deleteDay(${index})">
-                                    <img src="images/file-delete-alternate--file-common-delete-cross.svg" alt="delete day ${index + 1}">
+                                    <img src="images/delete.svg" alt="delete day ${index + 1}">
                                 </button>
                             </div>
                     </div>`;

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <title>Habbits App</title>
+    <link rel="icon" href="images/angle-brackets--code-angle-programming-file-bracket.svg" type="image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap">
@@ -13,31 +14,6 @@
 </head>
 <body>
     <div class="app">
-        <div class="panel">
-            <h3>Habbit</h3>
-            <button class="menu-item slider" onclick="showMenu()">
-                <img class="logo" src="images/angle-brackets--code-angle-programming-file-bracket.svg" alt="Logo Habbit App">
-            </button>
-            <nav class="panel__menu">
-
-                <div class="menu-list">
-                    <!-- <button class="menu-item menu-item-active" menu-habbit-id="1">
-                        <img src="images/code-monitor-1--code-tags-angle-bracket-monitor.svg" alt="Coding">
-                    </button>
-                    <button class="menu-item">
-                        <img src="images/heart-rate-pulse-graph.svg" alt="Training">
-                    </button>
-                    <button class="menu-item">
-                        <img src="images/fork-knife--fork-spoon-knife-food-dine-cook-utensils-eat-restaurant-dining-kitchenware.svg" alt="Nutrition">
-                    </button> -->
-                </div>
-
-                <button class="menu-add" onclick="togglePopup()">
-                    <img src="images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.svg" alt="Add">
-                </button>
-
-            </nav>
-        </div>
 
         <div class="content">
             <header class="header">
@@ -75,6 +51,29 @@
                 </div>
             </main>
         </div>
+
+        <div class="mobile-menu">
+            <div class="panel">
+                <nav class="panel__menu">
+    
+                    <div class="menu-list">
+                        <!-- <button class="menu-item menu-item-active" menu-habbit-id="1">
+                            <img src="images/code-monitor-1--code-tags-angle-bracket-monitor.svg" alt="Coding">
+                        </button>
+                        <button class="menu-item">
+                            <img src="images/heart-rate-pulse-graph.svg" alt="Training">
+                        </button>
+                        <button class="menu-item">
+                            <img src="images/fork-knife--fork-spoon-knife-food-dine-cook-utensils-eat-restaurant-dining-kitchenware.svg" alt="Nutrition">
+                        </button> -->
+                    </div>
+                    <button class="menu-add" onclick="togglePopup()">
+                        <img src="images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.svg" alt="Add">
+                    </button>
+                </nav>
+            </div>
+        </div>
+
         <div class="cover cover-hidden" id="add-habbit-popup">
             <div class="popup">
                 <h2 class="popup__title">New habit</h2>
@@ -127,7 +126,7 @@
                     </button>
                 </form>
                 <button class="popup__close" onclick="togglePopup()">
-                    <img src="images/delete-1--remove-add-button-buttons-delete-cross-x-mathematics-multiply-math.svg" alt="Close">
+                    <img src="images/delete.svg" alt="Close">
                 </button>
 
             </div>
