@@ -175,17 +175,45 @@ function addDays(event) {
         if (habbit.id === globalActiveHabbitId) {
             return {
                 ...habbit,
-                days: habbit.days.concat([{ comment: data.comment }])
+                days: habbit.days.concat([{ comment: data.comment }]),
+                lastUpdated: new Date().toISOString()
             };
         }
         return habbit;
     });
-
     resetForm(event.target, ['comment']);
     rerender(globalActiveHabbitId);
     saveData();
 }
 
+function checkReminders() {
+    const today = new Date().toDateString();
+    
+    habbits.forEach(habbit => {
+        if (habbit.days.length >= habbit.target) return;
+        
+        const lastUpdatedDate = habbit.lastUpdated ? new Date(habbit.lastUpdated).toDateString() : null;
+        if (lastUpdatedDate !== today) {
+            sendNotification(`Don't forget to add a habit day "${habbit.name}"!`);
+        }
+    });
+}
+
+checkReminders();
+setInterval(checkReminders, 24 * 60 * 60 * 1000);
+
+
+function sendNotification(message) {
+    if (Notification.permission === 'granted') {
+        new Notification('Reminder', { body: message });
+    } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+                new Notification('Reminder', { body: message });
+            }
+        });
+    }
+}
 // delete days
 
 function deleteDay(index) {
@@ -275,6 +303,12 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./scripts/sw.js')
+            .then(registration => console.log('ServiceWorker registered'))
+            .catch(err => console.log('ServiceWorker failed:', err));
+
+    }
     showMenu();
 });
 
@@ -282,6 +316,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // init
 (() => {
     loadData();
+    if ('Notification' in window) {
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+                console.log('Разрешение на уведомления получено');
+            }
+        });
+    }
 
     const hashId = Number(document.location.hash.replace('#', ''));
     if (isNaN(hashId)) {

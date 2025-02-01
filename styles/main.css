@@ -79,8 +79,6 @@ body {
         flex-direction: row;
         justify-content: space-between;
         padding: 10px;
-
-        overflow-x: scroll;
     }
     
     .logo {
@@ -189,8 +187,37 @@ body {
     }
     @media (max-height: 751px) {
         .main__list {
+            max-height: 335px;
+        }
+    }
+    @media (max-height: 735px) {
+        .main__list {
+            max-height: 315px;
+        }
+    }
+    @media (max-height: 715px) {
+        .main__list {
+            max-height: 300px;
+        }
+    }
+    @media (max-height: 698px) {
+        .main__list {
+            max-height: 280px;
+        }
+    }
+    @media (max-height: 680px) {
+        .main__list {
+            max-height: 260px;
+        }
+    }
+    @media (max-height: 661px) {
+        .main__list {
             max-height: 250px;
         }
+    }
+
+    .goal-reached-message {
+        margin-top: 25px;
     }
 
     .habbit-content {
