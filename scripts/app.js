@@ -27,11 +27,12 @@ const page = {
 
 // utils
 
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('touchstart', function(event) {
-        event.preventDefault();
-    }, { passive: false });
-});
+// document.querySelectorAll('img').forEach(img => {
+//     img.addEventListener('touchstart', function(event) {
+//         event.preventDefault();
+//         // event.stopPropagation();
+//     }, { passive: false });
+// });
 
 
 function loadData() {
