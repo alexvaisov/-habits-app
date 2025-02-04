@@ -27,6 +27,13 @@ const page = {
 
 // utils
 
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('touchstart', function(event) {
+        event.preventDefault();
+    }, { passive: false });
+});
+
+
 function loadData() {
     const habbitsString = localStorage.getItem(HABBIT_KEY);
     if (habbitsString) {
