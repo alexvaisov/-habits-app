@@ -27,12 +27,6 @@ const page = {
 
 // utils
 
-// document.querySelectorAll('img').forEach(img => {
-//     img.addEventListener('touchstart', function(event) {
-//         event.preventDefault();
-//         // event.stopPropagation();
-//     }, { passive: false });
-// });
 
 
 function loadData() {
@@ -130,7 +124,8 @@ function rerenderMenu(activeHabbit) {
         let longPressTimer;
         const longPressDuration = 1000;
 
-        const startLongPress = () => {
+        const startLongPress = (event) => {
+            event.preventDefault();
             longPressTimer = setTimeout(() => {
                 element.classList.add('menu-item-deleting');
                 deleteHabbit(habbit.id);
