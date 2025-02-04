@@ -75,6 +75,39 @@ function validateAndGetFormData(form, fields) {
     return isValid ? res : null;
 }
 
+let deleteCandidateId = null;
+
+function deleteHabbit(habbitId) {
+    const habbitToDelete = habbits.find(h => h.id === habbitId);
+    if (!habbitToDelete) return;
+    
+    const iconPath = `images/${habbitToDelete.icon.toLowerCase()}.svg`;
+    showDeleteModal(habbitId, iconPath);
+}
+
+function showDeleteModal(habbitId, iconPath) {
+    deleteCandidateId = habbitId;
+    const iconElement = document.querySelector('.delete-habbit-icon');
+    iconElement.src = iconPath;
+    document.getElementById('delete-habbit-popup').classList.remove('cover-hidden');
+}
+
+function closeDeleteModal() {
+    deleteCandidateId = null;
+    document.getElementById('delete-habbit-popup').classList.add('cover-hidden');
+}
+
+function confirmDelete() {
+    if (!deleteCandidateId) return;
+    
+    habbits = habbits.filter(habbit => habbit.id !== deleteCandidateId);
+    saveData();
+    
+    const newActiveHabbit = habbits.length > 0 ? habbits[0].id : null;
+    rerender(newActiveHabbit);
+    closeDeleteModal();
+}
+
 // render
 
 function rerenderMenu(activeHabbit) {
@@ -85,7 +118,37 @@ function rerenderMenu(activeHabbit) {
         element.classList.add('menu-item');
         element.addEventListener('click', () => rerender(habbit.id));
         element.innerHTML = `<img src="images/${habbit.icon.toLowerCase()}.svg" alt="${habbit.name}">`;
-        if (activeHabbit.id === habbit.id) {
+        
+        let longPressTimer;
+        const longPressDuration = 1000;
+
+        const startLongPress = () => {
+            longPressTimer = setTimeout(() => {
+                element.classList.add('menu-item-deleting');
+                deleteHabbit(habbit.id);
+            }, longPressDuration);
+        };
+
+        const cancelLongPress = () => {
+            clearTimeout(longPressTimer);
+            element.classList.remove('menu-item-deleting');
+        };
+
+        element.addEventListener('touchstart', startLongPress);
+        element.addEventListener('touchend', cancelLongPress);
+        element.addEventListener('touchcancel', cancelLongPress);
+
+        element.addEventListener('mousedown', startLongPress);
+        element.addEventListener('mouseup', cancelLongPress);
+        element.addEventListener('mouseleave', cancelLongPress);
+
+        element.addEventListener('click', (e) => {
+            if (!element.classList.contains('menu-item-deleting')) {
+                rerender(habbit.id);
+            }
+        });
+
+        if (activeHabbit?.id === habbit.id) {
             element.classList.add('menu-item-active');
         }
         page.menu.appendChild(element);
@@ -284,7 +347,6 @@ function addHabbit(event) {
     togglePopup();
     rerender(newHabbit.id);
 }
-
 
 
 function showMenu() {

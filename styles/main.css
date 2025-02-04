@@ -597,3 +597,63 @@ body {
     .popup__form input {
         width: 90%;
     }
+
+    .menu-item-deleting {
+        animation: shake 0.5s ease-in-out infinite;
+        background-color: #ff4757 !important;
+    }
+    
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-3px); }
+        75% { transform: translateX(3px); }
+    }
+    
+    .menu-item-deleting img {
+        filter: brightness(0.5) invert(1);
+    }
+
+ /*modal delete*/
+.popup-delete {
+    max-width: 300px;
+    text-align: center;
+}
+
+.delete-popup-content img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.delete-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-cancel, .btn-delete {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cancel {
+    background-color: #f1f2f6;
+    color: #2d3436;
+}
+
+.btn-cancel:hover {
+    background-color: #dfe4ea;
+}
+
+.btn-delete {
+    background-color: #ff7675;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #ff4757;
+}
