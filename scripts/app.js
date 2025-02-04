@@ -125,6 +125,7 @@ function rerenderMenu(activeHabbit) {
         const longPressDuration = 1000;
 
         const startLongPress = (event) => {
+            if (navigator.vibrate) navigator.vibrate(100);
             event.preventDefault();
             longPressTimer = setTimeout(() => {
                 element.classList.add('menu-item-deleting');
