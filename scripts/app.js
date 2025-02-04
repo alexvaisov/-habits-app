@@ -27,8 +27,6 @@ const page = {
 
 // utils
 
-
-
 function loadData() {
     const habbitsString = localStorage.getItem(HABBIT_KEY);
     if (habbitsString) {
@@ -118,43 +116,61 @@ function rerenderMenu(activeHabbit) {
         const element = document.createElement('button');
         element.setAttribute('menu-habbit-id', habbit.id);
         element.classList.add('menu-item');
-        element.addEventListener('click', () => rerender(habbit.id));
         element.innerHTML = `<img src="images/${habbit.icon.toLowerCase()}.svg" alt="${habbit.name}">`;
-        
+
         let longPressTimer;
         const longPressDuration = 1000;
+        let longPressTriggered = false;
 
-        const startLongPress = (event) => {
-            if (navigator.vibrate) navigator.vibrate(100);
-            event.preventDefault();
+        const handleTouchStart = (e) => {
+            e.preventDefault();
+            longPressTriggered = false;
             longPressTimer = setTimeout(() => {
+                longPressTriggered = true;
                 element.classList.add('menu-item-deleting');
                 deleteHabbit(habbit.id);
             }, longPressDuration);
         };
 
-        const cancelLongPress = () => {
+        const handleTouchEnd = (e) => {
             clearTimeout(longPressTimer);
-            element.classList.remove('menu-item-deleting');
-        };
-
-        element.addEventListener('touchstart', startLongPress);
-        element.addEventListener('touchend', cancelLongPress);
-        element.addEventListener('touchcancel', cancelLongPress);
-
-        element.addEventListener('mousedown', startLongPress);
-        element.addEventListener('mouseup', cancelLongPress);
-        element.addEventListener('mouseleave', cancelLongPress);
-
-        element.addEventListener('click', (e) => {
-            if (!element.classList.contains('menu-item-deleting')) {
+            if (!longPressTriggered) {
                 rerender(habbit.id);
             }
-        });
+            longPressTriggered = false;
+        };
+
+        const handleMouseDown = (e) => {
+            longPressTriggered = false;
+            longPressTimer = setTimeout(() => {
+                longPressTriggered = true;
+                element.classList.add('menu-item-deleting');
+                deleteHabbit(habbit.id);
+            }, longPressDuration);
+        };
+
+        const handleMouseUp = (e) => {
+            clearTimeout(longPressTimer);
+            if (!longPressTriggered) {
+                rerender(habbit.id);
+            }
+            longPressTriggered = false;
+        };
+
+        element.addEventListener('touchstart', handleTouchStart);
+        element.addEventListener('touchend', handleTouchEnd);
+        element.addEventListener('touchcancel', handleTouchEnd);
+
+        element.addEventListener('mousedown', handleMouseDown);
+        element.addEventListener('mouseup', handleMouseUp);
+        element.addEventListener('mouseleave', handleMouseUp);
+
+        element.addEventListener('contextmenu', (e) => e.preventDefault());
 
         if (activeHabbit?.id === habbit.id) {
             element.classList.add('menu-item-active');
         }
+
         page.menu.appendChild(element);
     }
 }
@@ -207,17 +223,15 @@ function rerenderContent(activeHabbit) {
 
 
 function rerender(activeHabbitId) {
+    const activeHabbit = habbits.find(h => h.id === activeHabbitId);
+    if (!activeHabbit) return;
+
     globalActiveHabbitId = activeHabbitId;
-    const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
-    if (!activeHabbit) {
-        return;
-    }
-    document.location.replace(document.location.pathname + '#' + activeHabbitId);
     rerenderMenu(activeHabbit);
     rerenderHead(activeHabbit);
     rerenderContent(activeHabbit);
+    saveData();
 }
-
 // work with days
 
 function addDays(event) {
